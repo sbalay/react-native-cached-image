@@ -35,10 +35,18 @@ function ensurePath(path) {
             }
         })
         .catch(err => {
+            const errorMessage = err.message.toLowerCase();
             // ignore folder already exists errors
-            if (err.message.includes('folder already exists')) {
+            if (
+                errorMessage.includes('already exists')
+                && (
+                    errorMessage.includes('folder') 
+                    || errorMessage.includes('directory')
+                )
+            ){
                 return;
             }
+
             return Promise.reject(err);
         });
 }
