@@ -43,6 +43,7 @@ function ensurePath(path) {
                     errorMessage.includes('folder') 
                     || errorMessage.includes('directory')
                 )
+                || errorMessage.includes('folder')
             ){
                 return;
             }
